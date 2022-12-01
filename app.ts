@@ -1,3 +1,9 @@
-let test2: string; test2= 'it works';
-let test1: number; test1 = 123;
-alert(test2);
+const t: string = 'it works';
+const tes: number = 123;
+
+function sayName(name:string):void{
+  console.log(name);
+}
+sayName('davichto');
+console.log(t);
+type SomeType = string | null | undefined;
