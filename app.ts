@@ -49,4 +49,17 @@ enum Season { Winter, Spring, Summer, Autumn };
 let current1: number = Season.Winter;
 console.log(current1); // 0
 let current: Season = 7;// not error
+//  any ---------------------------------------------------------------
+let testAny: any=123;
+testAny = 'avb';
+let testOr: string | number;
+testOr = 123;
+testOr = 'abc';
+// type ----------------------------------------------------------------
+type stumber = string | number;
+let testType: stumber = 123;
+// let stumber: 'suc'|'error';
+let myStr: 'suc'|'warn'|'errr';
+type message = 'success'| 'error';
+let mStr: message = 'success';
 
