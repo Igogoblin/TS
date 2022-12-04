@@ -1,5 +1,5 @@
-let test1: number = +'123';
-let test2: number = +'456';
+let test1: number = 123;
+let test2: number = 456;
 
 console.log(test1 + test2);
 
@@ -27,3 +27,26 @@ function sum(arr:Array<number>):number {
 function func(elem: HTMLElement, text: string):void {
 	elem.textContent = text;
 }
+
+// кортежи ----------------------------------------------------------
+// readonly - нельзя изменять
+// необязательное значение ?
+let user:  [string, number] = ['john', 31];
+let [nam, age] = user;
+let tpl: [string,...number[]];
+tpl = ['str', 1, 2, 3, 4, 5];
+// user[0] = 'eric';
+// console.log(user);
+let time: readonly [number, number, number] = [12, 59, 59];
+// time[0] = 13;
+console.log(time);
+let user1: [string, number, boolean?];
+user1 = ['eric', 31];
+//  перечисления enum --------------------------------------------------
+enum Season { Winter, Spring, Summer, Autumn };
+// let current: string = Season[0];
+// console.log(current); // 'Winter'
+let current1: number = Season.Winter;
+console.log(current1); // 0
+let current: Season = 7;// not error
+
