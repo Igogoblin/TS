@@ -62,4 +62,21 @@ let testType: stumber = 123;
 let myStr: 'suc'|'warn'|'errr';
 type message = 'success'| 'error';
 let mStr: message = 'success';
-
+// 
+let list: number[] =[1,2,3];
+// type or interface
+// type calculator = (x: number, y: number) => number;
+interface calculator {
+  (x:number, y:number):number;
+}
+let addNumbers: calculator = (x: number, y: number): number => x + y;
+let subtractNumbers: calculator = (x: number, y: number): number => x - y;
+console.log(addNumbers(1,2))
+let doCalculation = (operation: 'add' | 'subtract'): calculator => {
+    if (operation === 'add') {
+        return addNumbers;
+    } else {
+        return subtractNumbers;
+    }
+}
+console.log(doCalculation('add')(1, 2))
