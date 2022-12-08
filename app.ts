@@ -71,7 +71,7 @@ interface calculator {
 }
 let addNumbers: calculator = (x: number, y: number): number => x + y;
 let subtractNumbers: calculator = (x: number, y: number): number => x - y;
-console.log(addNumbers(1,2))
+console.log("interface: "+addNumbers(1,2))
 let doCalculation = (operation: 'add' | 'subtract'): calculator => {
     if (operation === 'add') {
         return addNumbers;
@@ -79,4 +79,123 @@ let doCalculation = (operation: 'add' | 'subtract'): calculator => {
         return subtractNumbers;
     }
 }
-console.log(doCalculation('add')(1, 2))
+console.log(doCalculation('add')(1, 2));
+// обьявление этим операторов идентичны(равны)
+// let addNumbers: Calculator = (x: number, y: number): number => x + y;
+// let addNumbers: Calculator = (number1: number, number2: number): number => number1 + number2;
+// let addNumbers: Calculator = (num1, num2) => num1 + num2;
+
+const skills: string[] = ['dev', 'devops', 'testing'];
+
+let res = skills
+.filter(s=>(s!='testing'))
+.map(s=>s+"! ")
+.reduce((a,b)=>a+b);
+console.log("res: ", res);
+const skillsD: Array<string>=['d','do'];
+// enum -----------------------------------------------------------------------
+
+
+enum StatusCode {
+    SUCCESS="s",
+    IN_PROCESS=2,
+    FAILD,
+}
+
+const resStatus={
+    message: 'платеж успешен',
+    statusCode: StatusCode.SUCCESS
+}
+function action(status: StatusCode.SUCCESS){}
+action(StatusCode.SUCCESS);
+// типизировать функцию --------------------------------------------
+/* Запрос */
+// {
+// 	"topicId": 5,
+// 	"status": "published" // "draft", "deleted"
+// }
+/* Ответ */
+// [
+// 	{
+// 		"question": "Как осуществляется доставка?",
+// 		"answer": "быстро!",
+// 		"tags": [
+// 			"popular",
+// 			"new"
+// 		],
+// 		"likes": 3,
+// 		"status": "published"
+// 	}
+// ]
+
+/* 
+async function getFaqs(req) {
+	const res = await fetch('/faqs', {
+		method: 'POST',
+		body: JSON.stringify(req)
+	});
+	const data = await res.json();
+	return data;
+}
+*/
+enum QustionStatus {
+    PUBLICHED="publiched",
+    DRAFT ="draft",
+    DELETED ="deleted"
+}
+
+async function getFaqs(req:{
+topicId:number;
+status?:QustionStatus
+}):Promise<{
+qustion:string;
+answer: string;
+tags: string[];
+likes:number;
+status: QustionStatus;
+}[]>{
+    const res = await fetch('/faqs', {
+		method: 'POST',
+		body: JSON.stringify(req)
+	});
+	const data = await res.json();
+	return data;
+}
+// union     string|number        ---------------------------------------------------------------------
+// literal types         let 1 = 1-------------------------------------------------------
+type User = {
+    name: string;
+    age: number;
+    skils:string[];
+}
+type Role = {
+    id:number;
+}
+type UserWithRole = User & Role;
+let userT = {
+    name: 'sd',
+    age: 22,
+    skils: ['1','2'],
+    id:1
+};
+// interface ---------------------------------------------------------------------
+interface Us {
+    name: string,
+    age: number,
+    log:(id:number)=>string;
+}
+interface UsInt {
+    place:string
+}
+interface UserWithInt extends Us,UsInt {
+    roleId:number
+}
+let userInt: UserWithInt ={
+    name:'sara',
+    age: 43,
+    roleId:34,
+    place: 'here',
+    log(id){
+        return '';
+    }
+}
