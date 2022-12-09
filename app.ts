@@ -265,3 +265,19 @@ status: PaymandStatus;
 data: IDataSuccess|IDataFaild;
 }
 // void - ничего не возвращает или игнорирует возврат----------------------------------------------
+// unknown вход не понятен 
+let inputUnk: unknown;
+inputUnk = 2;
+inputUnk = ['d','s'];
+// let re: string = inputUnk;//false
+async function getData(/*params:type*/) {
+    try {
+        await fetch('');
+    } catch (error){          //unknown 
+        if(error instanceof Error){
+          console.log(error.message)  
+        }
+    }
+}
+type u1 = unknown | number; // unknown
+type u2 = unknown & string; //string
