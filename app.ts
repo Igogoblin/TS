@@ -138,29 +138,29 @@ async function getFaqs(req) {
 	return data;
 }
 */
-enum QustionStatus {
-    PUBLICHED="publiched",
-    DRAFT ="draft",
-    DELETED ="deleted"
-}
+// enum QustionStatus {
+//     PUBLICHED="publiched",
+//     DRAFT ="draft",
+//     DELETED ="deleted"
+// }
 
-async function getFaqs(req:{
-topicId:number;
-status?:QustionStatus
-}):Promise<{
-qustion:string;
-answer: string;
-tags: string[];
-likes:number;
-status: QustionStatus;
-}[]>{
-    const res = await fetch('/faqs', {
-		method: 'POST',
-		body: JSON.stringify(req)
-	});
-	const data = await res.json();
-	return data;
-}
+// async function getFaqs(req:{
+// topicId:number;
+// status?:QustionStatus
+// }):Promise<{
+// qustion:string;
+// answer: string;
+// tags: string[];
+// likes:number;
+// status: QustionStatus;
+// }[]>{
+//     const res = await fetch('/faqs', {
+// 		method: 'POST',
+// 		body: JSON.stringify(req)
+// 	});
+// 	const data = await res.json();
+// 	return data;
+// }
 // union     string|number        ---------------------------------------------------------------------
 // literal types         let 1 = 1-------------------------------------------------------
 type User = {
@@ -281,3 +281,17 @@ async function getData(/*params:type*/) {
 }
 type u1 = unknown | number; // unknown
 type u2 = unknown & string; //string
+// never      никогда  не должно произойти (пример зацикливание)-----------------------------------------
+function generatError(message:string):never{
+    throw new Error(message);
+}
+function dumpError():never{
+    while(true){}
+}
+// null  how as js
+// type guard мы говорим что уверены что это так для проверки ---------------------
+function isString(x:string|number): x is string{
+return typeof x === 'number';
+// упустили If else на стринг
+}
+console.log(isString('2'));
