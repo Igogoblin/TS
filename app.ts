@@ -201,3 +201,67 @@ let userInt: UserWithInt ={
 }
 // в интерфейс можно добавлять данные интерфейса(доопределение) работа с обьк, масс
 // в интерфейсе можно использовать union |  можно работать с примитивными типами
+interface UserUs {
+    login: string,
+    password?: number;
+}
+
+const user12: UserUs={
+    login:'a@a.ru',
+}
+
+function multiply(first:number,second:number):number{
+return first*second;
+}
+// 
+// Запрос в виде платежа
+// {
+// 	"sum": 10000,
+// 	"from": 2,
+// 	"to": 4
+// }
+// // Ответ
+// {
+// 	"status": "success",
+// 	"data": {
+// 		"databaseId": 567,
+// 		"sum": 10000,
+// 		"from": 2,
+// 		"to": 4
+// 	}
+// },
+// {
+// 	"status": "failed",
+// 	"data": {
+// 		"errorMessage": "Недостаточно средств",
+// 		"errorCode": 4
+// 	}
+// }
+
+interface Paymand {
+    sum: number;
+    from: number;
+    to: number;
+}
+interface IPaymantRequest extends Paymand {
+    
+}
+enum PaymandStatus {
+    Success = 'success',
+    Failed = 'failed'
+}
+interface IDataSuccess {
+    databaseId: number;
+	sum: number;
+	from: number;
+	to: number;
+}
+interface IDataFaild {
+    errorMessage:string;
+    errorCode: number;
+}
+interface IResponse {
+status: PaymandStatus;
+data: IDataSuccess|IDataFaild;
+}
+// void - ничего не возвращает или игнорирует возврат----------------------------------------------
