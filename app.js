@@ -193,8 +193,9 @@ function dumpError() {
     while (true) { }
 }
 // null  how as js
-// type guard мы говорим что уверены что это так
+// type guard мы говорим что уверены что это так для проверки ---------------------
 function isString(x) {
     return typeof x === 'number';
+    // упустили If else на стринг
 }
 console.log(isString('2'));
