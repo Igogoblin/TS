@@ -18,3 +18,34 @@ const res = skills
     message: ' plata uspeshna',
     StatusCode: StatusCode.SUCCESS
   }
+
+  // типизация typealias
+
+  type User = {
+    name: string,
+    age: number,
+    skills: string[]
+  }
+type Role = {
+    id: number
+  }
+
+  type UserWithRole = User & Role;
+
+  let user: User = {
+    name: 'asd',
+    age: 33,
+    skills:['1','2']
+  }
+  interface Usem {
+    name: string,
+    age: number,
+    skills: string[]
+  }
+  // interace можно дообределять, не работает с простыми типами, только внутри
+  // type для примитивных типов 
+  //  это ? обционально(может быть)
+
+  function test(param?:string){
+    const t = param ?? 5; // это ?? если param==null||param==undefined то тогда 5
+  }
