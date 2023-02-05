@@ -49,3 +49,4 @@ type Role = {
   function test(param?:string){
     const t = param ?? 5; // это ?? если param==null||param==undefined то тогда 5
   }
+  //void - ничего не возвращать или игнорировать возврат
